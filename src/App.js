@@ -10,6 +10,7 @@ export default function App() {
   } = useForm();
   const [userInfo, stateUserInfo] = useState();
   const onSubmit = data => {
+    e.preventDefault();
     stateUserInfo(data);
     console.log(data);
   };
@@ -39,7 +40,13 @@ export default function App() {
               type="email"
               name="email"
               placeholder="Email"
-              {...register('email', { required: 'Email is Required' })}
+              {...register('email', {
+                required: 'Email is Required',
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: 'enter valid email address'
+                }
+              })}
             />
           </div>
           <p>{errors.email?.message}</p>
@@ -51,7 +58,17 @@ export default function App() {
               type="password"
               name="password"
               placeholder="Password"
-              {...register('password', { required: 'Password is Required' })}
+              {...register('password', {
+                required: 'Password is Required',
+                minLength: {
+                  value: 4,
+                  message: 'password less than 3 characters'
+                },
+                maxLength: {
+                  value: 10,
+                  message: 'password exceeding 10 characters'
+                }
+              })}
             />
           </div>
           <p>{errors.password?.message}</p>
