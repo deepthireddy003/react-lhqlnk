@@ -1,0 +1,11 @@
+h1,
+p {
+  font-family: Lato;
+}
+.container {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
