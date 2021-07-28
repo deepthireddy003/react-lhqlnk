@@ -6,13 +6,13 @@ export default function App() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, reset }
   } = useForm();
   const [userInfo, stateUserInfo] = useState();
-  const onSubmit = data => {
-    e.preventDefault();
+  const onSubmit = (data, e) => {
     stateUserInfo(data);
     console.log(data);
+    e.target.reset();
   };
   return (
     <div className="container">
